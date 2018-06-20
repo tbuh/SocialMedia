@@ -6,6 +6,7 @@
     "test": "karma start ClientApp/test/karma.conf.js"
   },
   "devDependencies": {
+    "@aspnet/signalr": "1.0.0",
     "@angular/animations": "4.2.5",
     "@angular/common": "4.2.5",
     "@angular/compiler": "4.2.5",
