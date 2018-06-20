@@ -9,6 +9,12 @@ namespace SocialMedia.Controllers
 {
     public class FacebookController : Controller
     {
+        private SocialAPISettings _socialAPISettings;
+        public FacebookController(SocialAPISettings socialAPISettings)
+        {
+            _socialAPISettings = socialAPISettings;
+        }
+
         [HttpGet]
         public ActionResult Receive()
         {
@@ -17,7 +23,7 @@ namespace SocialMedia.Controllers
             //_logWriter.WriteLine(Request.RawUrl);
 
             if (query["hub.mode"] == "subscribe" &&
-                query["hub.verify_token"] == "verify_token")
+                query["hub.verify_token"] == _socialAPISettings.Facebook_verify_token)
             {
                 //string type = Request.QueryString["type"];
                 var retVal = query["hub.challenge"];
