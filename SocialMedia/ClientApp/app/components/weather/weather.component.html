@@ -1,0 +1,35 @@
+﻿<div class="messages">
+    <div #scrollMe style="padding: 10px;margin-bottom: 30px;height: 100%; overflow-y: scroll;">
+        <div class="left-message">
+            <div class="message__text">
+                <div class="message__text__content">
+                    Enter name of the city- Ex: London
+                    <div class="message__time">{{date}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weather-block" *ngIf='weatherVisibility'>
+            <div *ngFor="let weather of weathers" class="container">
+                <div class="right-message">
+                    <div class="message__text">
+                        <div class="message__text__content">
+                            {{weather.name}} {{weather.main.temp_min}} {{weather.main.te}}
+                            <div class="message__time">
+                                {{date}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="triangle-down-left">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <input #city (keyup.enter)="getWeather(city.value); city.value=''" placeholder="Enter city">
+    </div>
+</div>

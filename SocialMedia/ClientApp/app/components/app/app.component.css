@@ -1,6 +1,131 @@
-@media (max-width: 767px) {
-    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-    .body-content {
-        padding-top: 50px;
-    }
+html, body {
+    height: 100%;
+    display: block;
 }
+
+.content {
+    height: 100%;
+    display: flex;
+    width: 100%;
+}
+
+.container {
+    font-family: Tahoma, sans-serif, Arial, Helvetica;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    background: #5682A3;
+    height: 52px;
+    width: 100%;
+    color: #fff;
+    text-align: start;
+    line-height: 50px;
+}
+
+.title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.chat-link {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+
+    .chat-link:hover {
+        background: #eef2f5;
+        cursor: pointer;
+    }
+
+.name {
+    height: 50%;
+    margin-left: 5px;
+    font-size: 14px;
+    margin-top: 15px;
+    width: calc(100% - 80px);
+    float: left;
+    color: black;
+    font-weight: bold;
+}
+
+.tchat-text {
+    height: 50%;
+    width: 30%;
+    overflow: hidden;
+    font-weight: normal;
+    float: left;
+    margin-left: 5px;
+    font-size: 14px;
+    margin-top: 4px;
+    color: grey;
+}
+
+.circle-weather-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    float: left;
+    background-image: url(../content/Weather.gif);
+}
+
+.circle-news-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    float: left;
+    background-image: url(../content/News.jpg);
+}
+
+.circle-support-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    float: left;
+    background-image: url(../content/LiveSupport.jpg);
+}
+
+.circle-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    float: left;
+    background-color: green;
+}
+
+.chat-body {
+    background-image: url("https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/art/bg_initial.jpg");
+    position: relative;
+    flex-direction: row;
+    height: 100%;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    /*overflow-y: scroll; */
+}
+
+.chat-link-list {
+    width: 20%;
+    overflow-y: scroll;
+    background: #fff;
+    min-width: 180px;
+    flex-direction: row;
+    height: 100%;
+}
+
+    .chat-link-list a {
+        width: 100%;
+        display: block;
+    }
