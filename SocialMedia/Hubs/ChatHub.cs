@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using SocialMedia.Models;
+using SocialMedia.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +10,20 @@ namespace SocialMedia.Hubs
 {
     public class ChatHub : Hub
     {
-        public Task Send(string data)
+        private ChatService _chatService;
+        public ChatHub(ChatService chatService)
         {
-            return Clients.All.SendAsync("Send", "Send Test Done...");
+            _chatService = chatService;
+        }
+
+        public void SendMessage(ChatMessage message)
+        {
+            _chatService.MessageFromAgent(message);
         }
 
         public override Task OnConnectedAsync()
         {
+            _chatService.InitAgent(this.Context.ConnectionId);
             return base.OnConnectedAsync();
         }
     }

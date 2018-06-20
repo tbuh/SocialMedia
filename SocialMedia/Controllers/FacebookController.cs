@@ -4,14 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Models;
+using SocialMedia.Services;
 
 namespace SocialMedia.Controllers
 {
     public class FacebookController : Controller
     {
         private SocialAPISettings _socialAPISettings;
-        public FacebookController(SocialAPISettings socialAPISettings)
+        private ChatService _chatService;
+        public FacebookController(SocialAPISettings socialAPISettings, ChatService chatService)
         {
+            _chatService = chatService;
             _socialAPISettings = socialAPISettings;
         }
 
@@ -35,8 +38,8 @@ namespace SocialMedia.Controllers
             }
         }
 
-        [HttpPost("Receive")]
-        public async Task<ActionResult> ReceivePost(BotRequest data)
+        [HttpPost]
+        public async Task<ActionResult> Receive(BotRequest data)
         {
             foreach (var entry in data.entry)
             {
@@ -48,29 +51,27 @@ namespace SocialMedia.Controllers
                     var fbmsg = message.message.text;
                     try
                     {
-                        //var chatMessage = chatService.AddFBMessage(message.sender.id, fbmsg);
-
-                        //if (chatMessage.ChatRoom.AgentId != null)
-                        //{
-                        //    //var chatUser = chatService.GetChatUserByAgentId(chatMessage.ChatRoom.AgentId);
-                        //    //if (chatUser != null)
-                        //    //{
-                        //    var notificationHub = GlobalHost.ConnectionManager.GetHubContext<Hubs.Chat>();
-                        //    //foreach (var connectedClient in chatUser.ConnectedClients)
-                        //    //{
-                        //    //    await (Task)notificationHub.Clients.Client(connectedClient.ConnectionId).addNewMessageToPage("Facebook User", chatMessage.Text);
-                        //    //}
-                        //    await (Task)notificationHub.Clients.Client(chatMessage.ChatRoom.ConnectionId).addNewMessageToPage("Facebook User", chatMessage.Text);
-                        //    //}
-                        //}
+                        await _chatService.MessageFromFB(message.sender.id, fbmsg);
                     }
                     catch (Exception ex)
                     {
-                        //fBService.Send(message.sender.id, $"Error: {ex.Message}. Please wait few minutes!");
                     }
                 }
             }
 
+            return Ok();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Test(string data)
+        {
+            try
+            {
+                await _chatService.MessageFromFB(Guid.Empty.ToString(), data);
+            }
+            catch (Exception ex)
+            {
+            }
             return Ok();
         }
     }

@@ -34,6 +34,7 @@ namespace SocialMedia
         {
             services.AddSingleton((sp) => new SocialAPISettings(Configuration));
             services.AddScoped<Services.OpenWeatherMapAPI>();
+            services.AddSingleton<Services.ChatService>();
             services.AddMvc();
             services.AddSignalR();
         }
