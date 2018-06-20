@@ -32,17 +32,22 @@ namespace SocialMedia
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddSingleton((sp) => new SocialAPISettings(Configuration));
             services.AddScoped<Services.OpenWeatherMapAPI>();
             services.AddSingleton<Services.ChatService>();
             services.AddMvc();
-            services.AddSignalR();
-            services.AddCors();
+            services.AddSignalR();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors(
+                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+            );
+
             app.UseSignalR(routes =>
             {
                 routes.MapHub<Hubs.ChatHub>("/chatHub");
@@ -62,9 +67,6 @@ namespace SocialMedia
             }
 
             app.UseStaticFiles();
-            app.UseCors(
-       options => options.WithOrigins("*").AllowAnyMethod()
-   );
 
             app.UseMvc(routes =>
             {
