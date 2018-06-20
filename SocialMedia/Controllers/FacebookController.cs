@@ -67,7 +67,7 @@ namespace SocialMedia.Controllers
         {
             try
             {
-                await _chatService.MessageFromFB(Guid.Empty.ToString(), data);
+                await _chatService.MessageFromFB(null, data);
             }
             catch (Exception ex)
             {

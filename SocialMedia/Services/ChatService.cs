@@ -29,11 +29,15 @@ namespace SocialMedia.Services
                 message = message,
             };
 
+            if (string.IsNullOrEmpty(_agentId)) return;
+
             await (Task)_chatHub.Clients.Client(_agentId).SendAsync("Send", chatMessage);
         }
 
         public void MessageFromAgent(ChatMessage message)
         {
+            if (string.IsNullOrEmpty(_fbUserId)) return;
+
             _facebookApi.Send(_fbUserId, message.message);
         }
 
