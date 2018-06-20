@@ -27,7 +27,6 @@ namespace SocialMedia.Services
             ChatMessage chatMessage = new ChatMessage
             {
                 message = message,
-                sent = DateTime.Now
             };
 
             await (Task)_chatHub.Clients.Client(_agentId).SendAsync("Send", chatMessage);

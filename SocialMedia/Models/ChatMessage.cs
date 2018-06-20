@@ -7,7 +7,6 @@ namespace SocialMedia.Models
 {
     public class ChatMessage
     {
-        public DateTime sent { get; set; }
         public string message { get; set; }
     }
 }

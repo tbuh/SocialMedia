@@ -37,8 +37,13 @@ namespace SocialMedia
             services.AddSingleton((sp) => new SocialAPISettings(Configuration));
             services.AddScoped<Services.OpenWeatherMapAPI>();
             services.AddSingleton<Services.ChatService>();
+            services.AddSingleton<Services.FacebookApi>();
+            
             services.AddMvc();
-            services.AddSignalR();            
+            services.AddSignalR(o =>
+             {
+            o.EnableDetailedErrors = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
