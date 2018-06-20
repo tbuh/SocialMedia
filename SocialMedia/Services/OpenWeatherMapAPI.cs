@@ -45,6 +45,7 @@ namespace SocialMedia.Services
                     Temp = item.main.temp,
                     TempMin = item.main.temp_min,
                     TempMax = item.main.temp_max,
+                    City = model.city.name,
                 });
             }
             return res;

@@ -1,0 +1,126 @@
+﻿input {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: -webkit-fill-available;
+    height: 30px;
+    border: aliceblue;
+    padding: 5px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.messages {
+    display: flex;
+    width: 100%;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    justify-content: flex-end;
+    /* overflow-y: scroll; */
+    height: 100%;
+}
+
+.left-message {
+    align-self: flex-start;
+    align-items: center;
+    position: relative;
+    min-height: 30px;
+    max-width: 420px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 2px 1px 0 rgba(160,172,182,.5);
+}
+
+.right-message {
+    align-self: flex-start;
+    background-color: #effdde;
+    box-shadow: 0 2px 1px 0 rgba(93,196,82,.5);
+    align-items: center;
+    position: relative;
+    min-height: 30px;
+    max-width: 420px;
+    margin-bottom: 8px;
+    border-radius: 6px 6px 0 6px;
+}
+
+.weather-block {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    align-self: flex-end;
+    display: flex;
+}
+
+.triangle-down-left {
+    overflow: hidden;
+    align-self: flex-end;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 0 0 rgba(93,196,82,.5);
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #effdde;
+    z-index: 0;
+}
+
+.message__text,
+.message__image__text .message__text__content {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 2;
+}
+
+.message__image,
+.message__image__text {
+    position: relative;
+    z-index: 2;
+}
+
+.message__image {
+    border-radius: 6px;
+}
+
+.message__image__content {
+    border-radius: 6px;
+    margin-bottom: -3px;
+    max-width: 100%;
+}
+
+.message__time {
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 14px;
+    text-align: right;
+    font-size: 12px;
+    color: #a0acb6;
+}
+
+.my-message .message__time {
+    color: #5dc452;
+}
+
+.message__image .message__time {
+    display: block;
+    float: initial;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    padding: 4px;
+    color: #fff;
+    background-color: rgba(38,50,56,.5);
+    border-radius: 6px;
+    transition: opacity .2s linear;
+    opacity: 0;
+}
+
+.message__image:hover .message__time {
+    opacity: 1;
+}

@@ -11,6 +11,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { SocialService } from '../app/components/services/social.service';
 import { WeatherComponent } from './components/weather/weather.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { WeatherComponent } from './components/weather/weather.component';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        WeatherComponent
+        WeatherComponent,
+        ChatComponent
     ],
     imports: [
         CommonModule,
@@ -31,6 +33,7 @@ import { WeatherComponent } from './components/weather/weather.component';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'weather', component: WeatherComponent },
+            { path: 'chat', component: ChatComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
