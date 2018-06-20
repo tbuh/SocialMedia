@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 import { SocialService } from '../services/social.service';
+import { Weather } from '../models/weather';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -23,28 +25,34 @@ export class WeatherComponent implements OnInit, AfterViewChecked {
         } catch (err) { }
     }
 
-    //weathers: Weather[] = [];
+    weathers: Weather[];
     counter = 0;
     city = '';
     date: string;
     weatherVisibility: boolean = false;
 
-    constructor(private socialService: SocialService) { }
+    constructor(private socialService: SocialService) {
+        this.weathers = new Array<Weather>();
+    }
 
     ngOnInit() {
         this.getTime()
 
     }
-    //getWeather(city: string) {
+    getWeather(city: string) {
 
-    //    this.chatService.getWeather(city).subscribe((data) => {
 
-    //        this.weathers.push(JSON.parse(data['_body']));
-    //        this.weatherVisibility = true;
+        this.socialService.getWeather(city).subscribe(data => {
+            this.weathers.push(data);
+            console.log(data);
+        });
+        this.weatherVisibility = true;
 
-    //    })
 
-    //}
+    }
+    getWeatherCallBack(weather: Weather[]) {
+
+    }
     getTime() {
         const time = new Date;
         this.date = time.getHours() + ":" + time.getMinutes()

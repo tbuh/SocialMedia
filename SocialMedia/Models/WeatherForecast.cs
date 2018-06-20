@@ -12,5 +12,6 @@ namespace SocialMedia.Models
         public string Temp { get; set; }
         public string TempMin { get; set; }
         public string TempMax { get; set; }
+        public string City { get; set; }
     }
 }

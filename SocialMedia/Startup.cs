@@ -36,6 +36,7 @@ namespace SocialMedia
             services.AddScoped<Services.OpenWeatherMapAPI>();
             services.AddMvc();
             services.AddSignalR();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +61,9 @@ namespace SocialMedia
             }
 
             app.UseStaticFiles();
+            app.UseCors(
+       options => options.WithOrigins("*").AllowAnyMethod()
+   );
 
             app.UseMvc(routes =>
             {
